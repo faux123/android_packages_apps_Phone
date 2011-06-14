@@ -578,6 +578,9 @@ public class BluetoothHeadsetService extends Service {
                 mRemoteHeadsets.get(device).mHeadsetType = type;
                 int channel = device.getServiceChannel(BluetoothUuid.Handsfree);
                 mConnectThread = new RfcommConnectThread(device, channel, type);
+                if (mAdapter.isDiscovering()) {
+                    mAdapter.cancelDiscovery();
+                }
                 mConnectThread.start();
                 if (getPriority(device) < BluetoothHeadset.PRIORITY_AUTO_CONNECT) {
                     setPriority(device, BluetoothHeadset.PRIORITY_AUTO_CONNECT);
@@ -589,6 +592,9 @@ public class BluetoothHeadsetService extends Service {
                 mRemoteHeadsets.get(device).mHeadsetType = type;
                 int channel = device.getServiceChannel(BluetoothUuid.HSP);
                 mConnectThread = new RfcommConnectThread(device, channel, type);
+                if (mAdapter.isDiscovering()) {
+                    mAdapter.cancelDiscovery();
+                }
                 mConnectThread.start();
                 if (getPriority(device) < BluetoothHeadset.PRIORITY_AUTO_CONNECT) {
                     setPriority(device, BluetoothHeadset.PRIORITY_AUTO_CONNECT);
