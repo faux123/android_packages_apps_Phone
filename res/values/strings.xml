@@ -1435,4 +1435,8 @@
     <string translatable="false" name="advanced_settings_container">advanced settings container</string>
     <string translatable="false" name="auth_username">AuthUserName</string>
     <!-- End of SIP settings related strings -->
+
+    <string name="phone_number_label">My phone number</string>
+    <string name="phone_number_summary">Set the phone number for this device</string>
+
 </resources>
